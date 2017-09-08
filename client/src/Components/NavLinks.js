@@ -27,14 +27,14 @@ export default class NavLinks extends Component {
   render() {
     return (
       <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>Button Dropdown</DropdownToggle>
+        <DropdownToggle caret>SOMETHING FINANCIAL</DropdownToggle>
         <DropdownMenu>
-          <DropdownItem header>
+          <DropdownItem>
             <NavLink className="nav-link" exact to="/Portfolio">
               Portfolio
             </NavLink>
           </DropdownItem>
-          <DropdownItem disabled>
+          <DropdownItem>
             <NavLink className="nav-link" exact to="/Trade">
               Trade
             </NavLink>
