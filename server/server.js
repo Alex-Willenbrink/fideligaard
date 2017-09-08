@@ -3,6 +3,7 @@ const server = express();
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 require("isomorphic-fetch");
+const fs = require("fs");
 const baseUrl = "https://www.quandl.com/api/v3/datasets/EOD";
 
 //api endpoints
@@ -86,7 +87,7 @@ server.get("/api/stocks", async (req, res) => {
     });
   }
 
-  // console.log(stuff);
+  await fs.writeFile("data.json", JSON.stringify(scrubbedData, null, 2));
   return res.json(scrubbedData);
 });
 
