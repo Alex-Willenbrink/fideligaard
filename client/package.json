@@ -3,9 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.18.1",
+    "rc-slider": "^8.3.1",
+    "rc-tooltip": "^3.4.9",
     "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
+    "react-datetime-slider": "0.0.8",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.13"
+    "react-loading": "^0.1.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.13",
+    "reactstrap": "^4.8.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
