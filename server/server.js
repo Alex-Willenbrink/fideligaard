@@ -17,27 +17,23 @@ function addUrlQueryParams(url, queryObj) {
   return url;
 }
 
-function parseJSON(json, startDate, endDate) {
+function parseJSON(jsonCompany, startDate, endDate) {
   endDate = new Date(endDate);
   startDate = new Date(startDate);
-  let stockData = json[0]["dataset"]["data"].reverse();
+  let stockData = jsonCompany["dataset"]["data"].reverse();
   let currDate = startDate;
-  let columnNameCloseIndex = json[0]["dataset"]["column_names"].indexOf(
+  let columnNameCloseIndex = jsonCompany["dataset"]["column_names"].indexOf(
     "Close"
   );
   let stockDataParsed = [];
   let count = 0;
-  console.log("startDate = ", startDate, "\nendDate = ", endDate);
   while (endDate > currDate) {
-    // while (360 > count) {
-    console.log("count = ", count, "stockData.len = ", stockData.length);
     if (currDate < new Date(stockData[count][0])) {
       if (count < 1) {
         stockDataParsed.push({
           date: new Date(currDate),
           close: stockData[0][columnNameCloseIndex]
         });
-        console.log("day 1");
       } else {
         stockDataParsed.push({
           date: new Date(currDate),
@@ -53,7 +49,7 @@ function parseJSON(json, startDate, endDate) {
       close: stockData[count][columnNameCloseIndex]
     });
     count = stockData.length - 1 > count ? ++count : count;
-    // count++;
+    //count++
     currDate.setDate(currDate.getDate() + 1);
   }
   return stockDataParsed;
@@ -61,14 +57,13 @@ function parseJSON(json, startDate, endDate) {
 
 //server endpoint for getting all stock data
 server.get("/api/stocks", async (req, res) => {
-  const tickerArray = ["AAPL"]; //TODO: add all the tickers
+  const tickerArray = ["AAPL", "MMM", "BA"]; //TODO: add all the tickers
   //set defaults
   req.query.start_date = req.query.start_date || "2016-01-01";
   req.query.end_date = req.query.end_date || "2017-01-01";
   const urlArray = tickerArray.map(ticker =>
     addUrlQueryParams(`${baseUrl}/${ticker}.json?api_key=${API_KEY}`, req.query)
   );
-  console.log("urlArray ", urlArray);
   let data;
   let result;
   let scrubbedData;
@@ -81,9 +76,9 @@ server.get("/api/stocks", async (req, res) => {
       return buffer.json();
     });
     result = await Promise.all(promises);
-    // console.log("result = ", result);
-    scrubbedData = parseJSON(result, "2016-01-01", "2017-01-01");
-    console.log("scrubbedData = ", scrubbedData);
+    scrubbedData = result.map(jsonCompany =>
+      parseJSON(jsonCompany, "2016-01-01", "2017-01-01")
+    );
   } catch (err) {
     return res.json({
       error: err,
