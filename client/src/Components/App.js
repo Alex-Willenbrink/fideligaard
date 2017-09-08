@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { createStore, Provider, applyMiddleWare } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+
 //Portfolio, trade, transaction
 import Portfolio from "./Portfolio";
 import Trade from "./Trade";
 import Transactions from "./Transactions";
 import { Button } from "reactstrap";
-// import classnames from "classnames";
-// import reactTapEventPlugin from "react-tap-event-plugin";
-// const moment = require("moment");
+
 import StockContainer from "../Containers/StocksContainer";
 import NavLinks from "./NavLinks";
 import { NavLink } from "react-router-dom";
