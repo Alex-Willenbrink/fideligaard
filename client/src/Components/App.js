@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
+import FlatButton from "material-ui/FlatButton";
+import ReplayIcon from "material-ui/svg-icons/av/replay";
+import PlayIcon from "material-ui/svg-icons/av/play-arrow";
+import StopIcon from "material-ui/svg-icons/av/stop";
 
 import DatetimeSlider from "react-datetime-slider";
-import "react-datetime-slider/css/ReactDatetimeSlider.css";
+import "../../node_modules/react-datetime-slider/css/ReactDatetimeSlider.css";
 import "rc-slider/assets/index.css";
 import "rc-tooltip/assets/bootstrap.css";
 
@@ -13,7 +17,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import Trade from "./Trade";
 import Transactions from "./Transactions";
-
+// import classnames from "classnames";
+// import reactTapEventPlugin from "react-tap-event-plugin";
 // const moment = require("moment");
 
 class App extends Component {
