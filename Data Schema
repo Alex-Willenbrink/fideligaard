@@ -1,0 +1,13 @@
+array of dates
+["2017-01-01", "2013-56-45"]
+
+Stocks
+{
+"AAPL": {
+	"2017-01-01": 132.56
+	}
+}
+
+Array of dates [" "]
+
+array of symbols = ["AAPL", "FB"]
