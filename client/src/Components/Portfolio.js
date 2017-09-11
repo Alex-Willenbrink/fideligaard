@@ -1,4 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
+import StocksContainer from "../Containers/StocksContainer";
 
-export default () => <div>Portfolio io iooio</div>;
+export default () =>
+  <div>
+    <StocksContainer />
+  </div>;

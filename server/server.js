@@ -1,9 +1,18 @@
 require("dotenv").config();
 const express = require("express");
 const server = express();
-require("./database")(process.env.QUANDL_API_KEY);
+const fs = require("fs");
+
+if (!fs.existsSync("data.json")) {
+  require("./database")(process.env.QUANDL_API_KEY);
+}
 
 server.set("port", 3001);
+
+server.get("/api/stocks", (req, res) => {
+  console.log("got request");
+  return res.json(require("./data.json"));
+});
 
 const port = server.listen(server.get("port"), () => {
   console.log(`listening on ${server.get("port")}`);

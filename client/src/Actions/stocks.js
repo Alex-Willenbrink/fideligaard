@@ -1,30 +1,30 @@
-export const REQUEST_GET_STOCK = "REQUEST_GET_STOCK";
-export const SUCCESS_GET_STOCK = "SUCCESS_GET_STOCK";
-export const FAILURE_GET_STOCK = "SUCCESS_GET_STOCK";
+export const REQUEST_GET_STOCKS = "REQUEST_GET_STOCKS";
+export const SUCCESS_GET_STOCKS = "SUCCESS_GET_STOCKS";
+export const FAILURE_GET_STOCKS = "FAILURE_GET_STOCKS";
 
-const requestGetStock = () => ({
-  type: REQUEST_GET_STOCK
+export const requestGetStocks = () => ({
+  type: REQUEST_GET_STOCKS
 });
 
-const successGetStock = data => ({
-  type: SUCCESS_GET_STOCK,
+export const successGetStocks = data => ({
+  type: SUCCESS_GET_STOCKS,
   data
 });
 
-const failureGetStock = error => ({
-  type: FAIULRE_GET_STOCK
+export const failureGetStocks = error => ({
+  type: FAILURE_GET_STOCKS
 });
 
-export const getStock = () => async dispatch => {
-  dispatch(requestGetStock());
-  let url = "api/stock/";
+export const getStocks = () => async dispatch => {
+  dispatch(requestGetStocks());
+  let url = "api/stocks/";
   let result;
 
   try {
     result = await fetch(url);
     result = await result.json();
-    dispatch(successGetStock(result));
+    dispatch(successGetStocks(result));
   } catch (err) {
-    dispatch(failureGetStock(err));
+    dispatch(failureGetStocks(err));
   }
 };
