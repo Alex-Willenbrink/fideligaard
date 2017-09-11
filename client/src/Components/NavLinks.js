@@ -27,7 +27,7 @@ export default class NavLinks extends Component {
   render() {
     return (
       <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>SOMETHING FINANCIAL</DropdownToggle>
+        <DropdownToggle caret>Finance Options</DropdownToggle>
         <DropdownMenu>
           <DropdownItem>
             <NavLink className="nav-link" exact to="/Portfolio">
