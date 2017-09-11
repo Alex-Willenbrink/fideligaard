@@ -1,7 +1,7 @@
 // Get rid of this after it works
 require("isomorphic-fetch");
 const fs = require("fs");
-const baseUrl = "https://www.quandl.com/api/v3/datasets/EOD";
+const baseUrl = "https://www.quandl.com/api/v3/datasets/WIKI";
 
 //helper functions
 function addUrlQueryParams(url, queryObj) {
@@ -35,7 +35,9 @@ function parseStockJSON(jsonStockData, startDate, endDate) {
   let columnNameCloseIndex = jsonStockData["dataset"]["column_names"].indexOf(
     "Close"
   );
-  let stockDataParsed = [];
+  // let stockDataParsed = [];
+  let stockDataParsed = {};
+
   let count = 0;
   let stockDataObject = {};
 
@@ -46,16 +48,23 @@ function parseStockJSON(jsonStockData, startDate, endDate) {
     if (currDate < new Date(stockData[count][0])) {
       // Case 1A: No stock data yet
       // Case 1B: Have previous stockData stored
-      stockDayData[currDateKey] =
+      // stockDayData[currDateKey] =
+      //   count < 1
+      //     ? stockData[0][columnNameCloseIndex]
+      //     : stockData[count - 1][columnNameCloseIndex];
+
+      stockDataParsed[currDateKey] =
         count < 1
           ? stockData[0][columnNameCloseIndex]
           : stockData[count - 1][columnNameCloseIndex];
     } else {
       // Case 2: Everything is peachy, add data from actual date
-      stockDayData[currDateKey] = stockData[count][columnNameCloseIndex];
+      // stockDayData[currDateKey] = stockData[count][columnNameCloseIndex];
+      stockDataParsed[currDateKey] = stockData[count][columnNameCloseIndex];
       count = stockData.length - 1 > count ? ++count : count;
     }
-    stockDataParsed.push(stockDayData);
+    // stockDataParsed.push(stockDayData);
+
     currDate.setDate(currDate.getDate() + 1);
   }
   stockDataObject[jsonStockData["dataset"]["dataset_code"]] = stockDataParsed;
@@ -63,7 +72,8 @@ function parseStockJSON(jsonStockData, startDate, endDate) {
 }
 
 module.exports = async (QUANDL_API_KEY, queryObj = {}) => {
-  const tickerArray = ["AAPL", "MMM", "BA"];
+  const tickerArray = ["AAPL", "MMM", "BA", "AMZN", "TSLA"];
+  //V, PG, TRV, MSFT
 
   //set defaults for queryObj
   queryObj.start_date = queryObj.start_date || "2016-01-01";
@@ -77,22 +87,34 @@ module.exports = async (QUANDL_API_KEY, queryObj = {}) => {
       queryObj
     )
   );
-  let rawPromises, rawData, rawJsonPromises, jsonData, scrubbedJsonData;
+  let rawPromises, rawData, rawJsonPromises, jsonData;
+  let scrubbedJsonData = {};
   try {
     // Run fetches in parallel
     rawPromises = urlArray.map(url => {
+      let stuff = fetch(url);
       return fetch(url);
     });
     rawData = await Promise.all(rawPromises);
+    rawData.forEach(data => console.log(data.ok));
 
     // Run json conversion in parallel
     rawJsonPromises = rawData.map(buffer => {
       return buffer.json();
     });
     jsonData = await Promise.all(rawJsonPromises);
-    scrubbedJsonData = jsonData.map(jsonStockData =>
-      parseStockJSON(jsonStockData, queryObj.start_date, queryObj.end_date)
-    );
+    jsonData.forEach(jsonStockData => {
+      let data = parseStockJSON(
+        jsonStockData,
+        queryObj.start_date,
+        queryObj.end_date
+      );
+      scrubbedJsonData[Object.keys(data)[0]] = data[Object.keys(data)[0]];
+    });
+
+    // scrubbedJsonData = jsonData.map(jsonStockData =>
+    //   parseStockJSON(jsonStockData, queryObj.start_date, queryObj.end_date)
+    // );
 
     // Write json to file
     await fs.writeFile(
