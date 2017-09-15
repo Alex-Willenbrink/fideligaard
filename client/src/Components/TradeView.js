@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
-class TradeView extends Component {
+class TradeView extends PureComponent {
   constructor(props) {
     super(props);
 

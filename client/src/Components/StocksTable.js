@@ -9,32 +9,34 @@ const StocksTable = ({ tableData, handler }) => {
   if (!tableData || !tableData.length) return null;
 
   const headerData = ["Symbol", "Price", "1d", "7d", "30d", "Trade"];
-  let tableHeader = headerData.map(data => {
-    if (data === "Symbol" || data === "Price") {
+  let tableHeader = headerData.map(field => {
+    if (field === "Symbol" || field === "Price") {
       return (
-        <th key={data} onClick={handler} value={data}>
-          {data}
+        <th key={field} onClick={handler} value={field}>
+          {field}
         </th>
       );
     }
     return (
-      <th key={data}>
-        {data}
+      <th key={field}>
+        {field}
       </th>
     );
   });
 
   const tableDataRows = tableData.map(rowData => {
     return (
-      <tr>
+      <tr key={rowData.Symbol}>
         {Object.keys(rowData).map(key =>
-          <td>
+          <td key={rowData[key]}>
             {rowData[key]}
           </td>
         )}
-        <NavLink className="nav-link" exact to="/Trade">
-          trade
-        </NavLink>
+        <td key={rowData.Symbol}>
+          <NavLink key={rowData.Symbol} className="nav-link" exact to="/Trade">
+            trade
+          </NavLink>
+        </td>
       </tr>
     );
   });

@@ -6,12 +6,8 @@
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
     "moment": "^2.18.1",
-    "rc-slider": "^8.3.1",
-    "rc-tooltip": "^3.4.9",
     "react": "^15.6.1",
-    "react-date-picker": "^5.3.28",
     "react-datepicker": "^0.54.0",
-    "react-datetime-slider": "0.0.8",
     "react-dom": "^15.6.1",
     "react-loading": "^0.1.4",
     "react-redux": "^5.0.6",
@@ -19,6 +15,7 @@
     "react-scripts": "1.0.13",
     "react-tap-event-plugin": "^2.0.1",
     "react-time-slider": "0.0.1",
+    "react-transition-group": "^2.2.0",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -29,5 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-addons-perf": "^15.4.2"
   }
 }

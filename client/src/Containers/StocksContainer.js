@@ -112,7 +112,7 @@ class StocksContainer extends Component {
   };
 
   render() {
-    const { stocksData, isFetching } = this.props.StocksReducers;
+    const { isFetching } = this.props.StocksReducers;
 
     return (
       <div className="row">
