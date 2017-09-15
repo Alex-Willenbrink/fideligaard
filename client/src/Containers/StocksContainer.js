@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Card, CardBlock, CardTitle, Input } from "reactstrap";
+import { createSelector } from "reselect";
 
 import * as Actions from "../Actions";
 import StocksView from "../Components/StocksView";
@@ -8,7 +9,7 @@ import DatePicker from "../Components/DatePicker";
 import TradeView from "../Components/TradeView";
 import moment from "moment";
 
-class StocksContainer extends Component {
+class StocksContainer extends PureComponent {
   constructor() {
     super();
 
@@ -24,6 +25,7 @@ class StocksContainer extends Component {
   }
 
   onDateChange = date => {
+    console.log(this.props);
     this.setState({
       date: date
     });
@@ -151,6 +153,9 @@ class StocksContainer extends Component {
     );
   }
 }
+
+// Creating non-memoized selector functions
+// const getStocksReducers = (state) => state.StocksReducers;
 
 const mapStateToProps = state => {
   return {

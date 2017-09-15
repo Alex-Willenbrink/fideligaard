@@ -4,9 +4,11 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap": "^4.0.0-alpha.6",
     "moment": "^2.18.1",
     "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
     "react-datepicker": "^0.54.0",
     "react-dom": "^15.6.1",
     "react-loading": "^0.1.4",
@@ -19,6 +21,7 @@
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "thunk": "0.0.1"
   },
   "scripts": {

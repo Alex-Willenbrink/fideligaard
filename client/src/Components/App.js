@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //Portfolio, trade, transaction
@@ -12,7 +12,7 @@ import Navbar from "./Navbar";
 
 import PerfProfiler from "./Elements/PerfProfiler";
 
-class App extends Component {
+class App extends PureComponent {
   render() {
     return (
       <div className="App">
