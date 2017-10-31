@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 import Navbar from "../Navbar";
 import DateWidget from "../DateWidget";
+import DateWidgetContainer from "../../Containers/DateWidgetContainer";
 
 // import PerfProfiler from "./Elements/PerfProfiler";
 
@@ -22,7 +23,8 @@ class App extends PureComponent {
             <Navbar />
             <br />
             <br />
-            <DateWidget minDate="2012-08-08" maxDate="2015-01-01" />
+            <DateWidgetContainer />
+            {/* <DateWidget minDate={"2012-08-08"} maxDate={"2015-01-01"} /> */}
 
             {/* <Switch>
               <Route exact path="/Portfolio" component={StocksContainer} />

@@ -1,3 +1,4 @@
 import StocksReducers from "./stocks";
+import DateReducers from "./date";
 
-export { StocksReducers };
+export { StocksReducers, DateReducers };
