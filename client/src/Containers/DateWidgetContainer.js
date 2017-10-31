@@ -17,9 +17,9 @@ class DateWidgetContainer extends Component {
   // };
 
   componentDidMount() {
-    this.props.DateActions.setMinDate("2012-08-08");
-    this.props.DateActions.setCurrentDate("2012-08-08");
-    this.props.DateActions.setMaxDate("2015-08-08");
+    this.props.DateActions.setMinDate("2016-01-01");
+    this.props.DateActions.setCurrentDate("2016-01-01");
+    this.props.DateActions.setMaxDate("2016-12-31");
   }
 
   onDateChange = (e, value) => {
@@ -56,7 +56,11 @@ class DateWidgetContainer extends Component {
   }
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => {
+  return {
+    DateReducers: state.DateReducers
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   DateActions: bindActionCreators(DateActions, dispatch)

@@ -1,4 +1,5 @@
 import React from "react";
+import Paper from "material-ui/Paper";
 import Slider from "material-ui-slider-label/Slider";
 import "./DateWidget.css";
 import { cyan500 } from "material-ui/styles/colors";
@@ -32,29 +33,31 @@ const DateWidget = ({
   maxValue,
   onDateChange
 }) =>
-  <div className="slider-container">
-    <p className="date-slider-label">
-      {minDate.format("MM/DD/YYYY")}
-    </p>
-    <Slider
-      min={minValue}
-      max={maxValue}
-      defaultValue={minValue}
-      onChange={onDateChange}
-      step={1}
-      name="dateValue"
-      className="date-slider"
-      label={
-        <div style={styles.labelStyleOuter}>
-          <div style={styles.labelStyleInner}>
-            {currentDate.format("MM/DD/YYYY")}
+  <Paper>
+    <div className="slider-container">
+      <p className="date-slider-label">
+        {minDate.format("MM/DD/YYYY")}
+      </p>
+      <Slider
+        min={minValue}
+        max={maxValue}
+        defaultValue={minValue}
+        onChange={onDateChange}
+        step={1}
+        name="dateValue"
+        className="date-slider"
+        label={
+          <div style={styles.labelStyleOuter}>
+            <div style={styles.labelStyleInner}>
+              {currentDate.format("MM/DD/YYYY")}
+            </div>
           </div>
-        </div>
-      }
-    />
-    <p className="date-slider-label">
-      {maxDate.format("MM/DD/YYYY")}
-    </p>
-  </div>;
+        }
+      />
+      <p className="date-slider-label">
+        {maxDate.format("MM/DD/YYYY")}
+      </p>
+    </div>
+  </Paper>;
 
 export default DateWidget;
