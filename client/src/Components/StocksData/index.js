@@ -76,7 +76,9 @@ const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
               key[key.length - 1] === "D"
                 ? rowData[key] > 0
                   ? <UpWing className="svg-wing" color={green400} />
-                  : <DownWing className="svg-wing" color={red400} />
+                  : rowData[key] < 0
+                    ? <DownWing className="svg-wing" color={red400} />
+                    : null
                 : null}
             </div>
           </TableRowColumn>
