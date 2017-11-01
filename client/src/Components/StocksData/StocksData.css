@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'NeoSans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('NeoSans'), url(../../assets/NeoSansStd-Bold.otf) format('otf');
+}
+
+.stocks-data-top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100px;
+}
+
+.stocks-table-container {
+  padding: 10px !important;
+}
+
+.stocks-data-top {
+  margin: 0 10px !important;
+}
+
+/*#filter-by-symbol {
+  margin-bottom: 40px !important;
+}*/
+#stocks-data-header {
+  padding-top: 28px;
+  /*font-family: NeoSans;*/
+  /*font-weight: bold;*/
+}
+
+.stocks-table-label {
+  display: flex;
+  /*flex-direction: row;*/
+}
+
+.svg-arrow {
+  margin-top: -5px;
+  width: 30px !important;
+  height: 30px !important;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.svg-wing {
+  margin-top: -15px;
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+}
+
+.daily-stock-prices {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

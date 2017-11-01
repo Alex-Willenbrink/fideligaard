@@ -1,0 +1,27 @@
+{
+  "name": "project_fideligard_spa",
+  "version": "1.0.0",
+  "description": "Names: Alex and Eric Buy low, sell high.",
+  "main": "index.js",
+  "scripts": {
+    "startServer": "cd server && nodemon server.js",
+    "startClient": "cd client && npm start",
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently  --names \"server,client\" -c \"red,green\" \"npm run startServer\" \"npm run startClient\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex-Willenbrink/project_fideligard_spa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alex-Willenbrink/project_fideligard_spa/issues"
+  },
+  "homepage": "https://github.com/Alex-Willenbrink/project_fideligard_spa#readme",
+  "dependencies": {
+    "concurrently": "^3.5.0"
+  }
+}

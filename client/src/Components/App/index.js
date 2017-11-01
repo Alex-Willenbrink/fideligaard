@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 //Portfolio, trade, transaction
 // import Portfolio from "./Portfolio";
@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import NavLinks from "./NavLinks";
 // import { NavLink } from "react-router-dom";
 import Navbar from "../Navbar";
-import DateWidget from "../DateWidget";
 import DateWidgetContainer from "../../Containers/DateWidgetContainer";
 import StocksDataContainer from "../../Containers/StocksDataContainer";
 

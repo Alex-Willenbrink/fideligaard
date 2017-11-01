@@ -9,23 +9,37 @@ class StocksDataContainer extends PureComponent {
   state = {
     stocksData: [],
     filter: "",
-    sortType: ""
+    sortDir: "ASC"
   };
 
   async componentDidMount() {
     await this.props.StocksActions.getStocks();
-    this.parseData();
+    this.parseData(this.props);
   }
 
-  componentWillReceiveProps() {
-    if (this.props.StocksReducers.stocksData.tickers) {
-      this.parseData();
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.StocksReducers.stocksData.tickers) {
+      this.parseData(nextProps);
     }
   }
 
-  parseDataRow = ticker => {
-    const stocks = this.props.StocksReducers.stocksData.stocks[ticker];
-    const { currentDate } = this.props.DateReducers;
+  parseData = props => {
+    const { currentDate } = props.DateReducers;
+    const { tickers } = props.StocksReducers.stocksData;
+    const reggie = new RegExp(this.state.filter);
+    const filteredTickers = tickers.filter(ticker => reggie.test(ticker));
+    const stocksData = filteredTickers.map(ticker =>
+      this.parseDataRow(ticker, props)
+    );
+    this.sortData(stocksData);
+    this.setState({
+      stocksData: stocksData
+    });
+  };
+
+  parseDataRow = (ticker, props) => {
+    const stocks = props.StocksReducers.stocksData.stocks[ticker];
+    const { currentDate } = props.DateReducers;
     const currentPrice = stocks[currentDate.format("YYYY-MM-DD")];
     const dataRow = {
       Symbol: ticker,
@@ -43,16 +57,42 @@ class StocksDataContainer extends PureComponent {
     return dataRow;
   };
 
-  parseData = () => {
-    const { tickers } = this.props.StocksReducers.stocksData;
-    // const reggie = new RegExp(this.state.filter);
-    // const filteredTickers = tickers.filter(ticker => reggie.test(ticker));
-
-    // return this.sortData(
-    this.setState({
-      stocksData: tickers.map(ticker => this.parseDataRow(ticker))
+  onFilterChange = async e => {
+    await this.setState({
+      filter: e.target.value
     });
+    this.parseData(this.props);
   };
+
+  onSortChange = async e => {
+    const sortDir = this.state.sortDir === "ASC" ? "DESC" : "ASC";
+    await this.setState({
+      sortDir
+    });
+    this.parseData(this.props);
+  };
+
+  sortData = parsedData => {
+    let compare;
+    switch (this.state.sortDir) {
+      case "ASC":
+        compare = (a, b) => {
+          return a.Symbol < b.Symbol ? -1 : 1;
+        };
+        break;
+      case "DESC":
+        compare = (a, b) => {
+          return a.Symbol > b.Symbol ? -1 : 1;
+        };
+        break;
+      default:
+        compare = (a, b) => {
+          return a.Symbol < b.Symbol ? -1 : 1;
+        };
+    }
+    parsedData.sort(compare);
+  };
+
   //
   // sortData = parsedData => {
   //   let compare;
@@ -81,20 +121,6 @@ class StocksDataContainer extends PureComponent {
   //   return parsedData.sort(compare);
   // };
   //
-  // onFilterChange = e => {
-  //   this.setState({
-  //     filter: e.target.value
-  //   });
-  // };
-  //
-  // onSortChange = e => {
-  //   let sortDir = this.state.sortType.split("_")[1];
-  //   sortDir = sortDir === "ASC" ? "DESC" : "ASC";
-  //
-  //   this.setState({
-  //     sortType: `${e.target.getAttribute("value").toUpperCase()}_${sortDir}`
-  //   });
-  // };
 
   render() {
     // console.log("this.props: ", this.props);
@@ -102,7 +128,14 @@ class StocksDataContainer extends PureComponent {
     // <StocksData stocksData={this.state.stocksData} />
     // const { isFetching } = this.props.StocksReducers;
 
-    return <StocksData stocksData={this.state.stocksData} />;
+    return (
+      <StocksData
+        stocksData={this.state.stocksData}
+        onFilterChange={this.onFilterChange}
+        onSortChange={this.onSortChange}
+        sortDir={this.state.sortDir}
+      />
+    );
   }
 }
 
