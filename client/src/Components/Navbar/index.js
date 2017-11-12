@@ -5,7 +5,7 @@ import SvgIcon from "material-ui/SvgIcon";
 
 import AppBar from "material-ui/AppBar";
 
-import NavLinks from "../NavLinks";
+// import NavLinks from "../NavLinks";
 
 const MoneyIcon = ({ fill }) =>
   <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" fill={fill}>

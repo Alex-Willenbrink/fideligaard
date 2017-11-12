@@ -8,6 +8,7 @@
     "material-ui": "^0.19.4",
     "material-ui-slider-label": "git+https://github.com/tariqwest/material-ui-slider-label.git",
     "moment": "^2.18.1",
+    "query-string": "^5.0.1",
     "rc-slider": "^8.3.4",
     "rc-tooltip": "^3.5.0",
     "react": "^15.6.1",

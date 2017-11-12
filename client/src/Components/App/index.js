@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //Portfolio, trade, transaction
 // import Portfolio from "./Portfolio";
@@ -11,6 +11,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "../Navbar";
 import DateWidgetContainer from "../../Containers/DateWidgetContainer";
 import StocksDataContainer from "../../Containers/StocksDataContainer";
+import TradeContainer from "../../Containers/TradeContainer";
 
 import "./App.css";
 
@@ -25,18 +26,26 @@ class App extends PureComponent {
             <Navbar />
             <br />
             <br />
-            <div className="stocks-container">
-              <div id="stocks-data-container">
+            <article id="main-container">
+              <div className="left">
                 <StocksDataContainer />
               </div>
-              <div id="date-widget-container">
-                <DateWidgetContainer />
+              <div className="right">
+                <div id="date-widget-container">
+                  <DateWidgetContainer />
+                </div>
+                <br />
+                <br />
+                <br />
+                <Switch>
+                  <Route
+                    exact
+                    path="/Trade"
+                    render={() => <TradeContainer id="trade-container" />}
+                  />
+                </Switch>
               </div>
-            </div>
-
-            {/* <Switch>
-              <Route exact path="/Portfolio" component={StocksContainer} />
-            </Switch> */}
+            </article>
           </div>
         </Router>
       </div>

@@ -9,6 +9,7 @@ import {
 } from "material-ui/Table";
 import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
+import { withRouter, Link } from "react-router-dom";
 
 // import NeoSans from "../../assets/NeoSansStd-Bold.otf"
 import SvgIcon from "material-ui/SvgIcon";
@@ -39,12 +40,13 @@ const DownWing = props =>
     <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
     <path d="M0-.75h24v24H0z" fill="none" />
   </SvgIcon>;
+
 // import { NavLink } from "react-router-dom";
 
 // row = {symbol: "AAPL", Price: 123.45, "1d": +1.54...}
 
 const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
-  const headerLabels = ["Symbol", "Price", "1d", "7d", "30d"]; //, "Trade"
+  const headerLabels = ["Symbol", "Price", "1d", "7d", "30d", "Trade"];
   const tableHeaderRow = headerLabels.map((label, index) =>
     <TableHeaderColumn key={label}>
       <div className="stocks-table-label">
@@ -65,12 +67,11 @@ const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
     return (
       <TableRow key={rowData.Symbol}>
         {Object.keys(rowData).map(key =>
-          <TableRowColumn>
+          <TableRowColumn key={`${rowData.Symbol}${key}`}>
             <div className="daily-stock-prices">
               <p>
                 {rowData[key] ? rowData[key] : "?"}
               </p>
-              {/* add arrows to days */}
               {rowData[key] &&
               !isNaN(rowData[key]) &&
               key[key.length - 1] === "D"
@@ -83,11 +84,13 @@ const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
             </div>
           </TableRowColumn>
         )}
-        {/* <td key={rowData.Symbol}>
-          <NavLink key={rowData.Symbol} className="nav-link" exact to="/Trade">
-            trade
-          </NavLink>
-        </td> */}
+        <TableRowColumn key={rowData.Symbol}>
+          <div className="daily-stock-prices">
+            <Link className="nav-link" to={`/Trade?t=${rowData.Symbol}`}>
+              <p>Trade</p>
+            </Link>
+          </div>
+        </TableRowColumn>
       </TableRow>
     );
   });
@@ -123,4 +126,4 @@ const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
   );
 };
 
-export default StocksData;
+export default withRouter(StocksData);

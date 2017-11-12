@@ -6,15 +6,6 @@ import * as DateActions from "../Actions/date";
 import DateWidget from "../Components/DateWidget";
 
 class DateWidgetContainer extends Component {
-  // state = {
-  //   minDate: this.props.minDate,
-  //   maxDate: this.props.maxDate,
-  //   currentDate: this.props.minDate
-  //   maxValue: this.props.maxDate).diff(
-  //     this.props.minDate,
-  //     "days"
-  // };
-
   componentDidMount() {
     this.props.DateActions.setMinDate("2016-01-01");
     this.props.DateActions.setCurrentDate("2016-01-01");
@@ -35,7 +26,6 @@ class DateWidgetContainer extends Component {
   };
 
   render() {
-    // console.log("this.props: ", this.props);
     const { minDate, maxDate, currentDate } = this.props.DateReducers;
     const dateWidget =
       minDate && maxDate && currentDate

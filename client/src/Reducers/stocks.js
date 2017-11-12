@@ -1,7 +1,7 @@
 import { StocksActions } from "../Actions";
 
 const initialState = {
-  stocksData: {},
+  stocksData: null,
   isFetching: false,
   error: null
 };

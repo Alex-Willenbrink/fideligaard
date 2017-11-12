@@ -1,11 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import StocksData from "../Components/StocksData";
 import { connect } from "react-redux";
 
 import * as StocksActions from "../Actions/stocks";
 import { bindActionCreators } from "redux";
 
-class StocksDataContainer extends PureComponent {
+class StocksDataContainer extends Component {
   state = {
     stocksData: [],
     filter: "",
@@ -18,13 +18,12 @@ class StocksDataContainer extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.StocksReducers.stocksData.tickers) {
+    if (nextProps.StocksReducers.stocksData) {
       this.parseData(nextProps);
     }
   }
 
   parseData = props => {
-    const { currentDate } = props.DateReducers;
     const { tickers } = props.StocksReducers.stocksData;
     const reggie = new RegExp(this.state.filter);
     const filteredTickers = tickers.filter(ticker => reggie.test(ticker));
@@ -93,41 +92,7 @@ class StocksDataContainer extends PureComponent {
     parsedData.sort(compare);
   };
 
-  //
-  // sortData = parsedData => {
-  //   let compare;
-  //   switch (this.state.sortType) {
-  //     case "SYMBOL_ASC":
-  //       compare = (a, b) => {
-  //         return a.Symbol > b.Symbol ? -1 : 1;
-  //       };
-  //       break;
-  //     case "SYMBOL_DESC":
-  //       compare = (a, b) => (a.Symbol < b.Symbol ? -1 : 1);
-  //       break;
-  //     case "PRICE_ASC":
-  //       compare = (a, b) => {
-  //         return a.Price > b.Price ? -1 : 1;
-  //       };
-  //       break;
-  //     case "PRICE_DESC":
-  //       compare = (a, b) => {
-  //         return a.Price < b.Price ? -1 : 1;
-  //       };
-  //       break;
-  //     default:
-  //       return parsedData;
-  //   }
-  //   return parsedData.sort(compare);
-  // };
-  //
-
   render() {
-    // console.log("this.props: ", this.props);
-    // const stocksData = this.state.stocksData
-    // <StocksData stocksData={this.state.stocksData} />
-    // const { isFetching } = this.props.StocksReducers;
-
     return (
       <StocksData
         stocksData={this.state.stocksData}

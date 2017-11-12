@@ -1,15 +1,14 @@
-.stocks-container {
+#main-container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
-#date-widget-container {
+#main-container .left {
   width: 40%;
-  margin-left: 3%;
 }
 
-#stocks-data-container {
+#main-container .right {
   width: 40%;
 }

@@ -6,7 +6,6 @@
   "scripts": {
     "startServer": "cd server && nodemon server.js",
     "startClient": "cd client && npm start",
-
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently  --names \"server,client\" -c \"red,green\" \"npm run startServer\" \"npm run startClient\""
   },
@@ -22,6 +21,7 @@
   },
   "homepage": "https://github.com/Alex-Willenbrink/project_fideligard_spa#readme",
   "dependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "redux-devtools-extension": "^2.13.2"
   }
 }
