@@ -7,7 +7,11 @@ Trade stocks to become a master of the stock market!
 * Slide the date widget to change the date in which you want to trade
 * Click on "Trade" on a particular stock to trade the stock
 * Users have options to:
-* <ol><li>trade stocks</li><li>view past transactions</li><li>view stock portfolio (amount of each stock in user possession)</li></ol> 
+<ol>
+  <li>trade stocks</li>
+  <li>view past transactions</li>
+  <li>view stock portfolio (amount of each stock in user possession)</li>
+</ol> 
 
 
 [Checkout Fideligaard Here!](https://fideligaard-app.herokuapp.com)
