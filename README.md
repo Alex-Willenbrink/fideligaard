@@ -1,23 +1,20 @@
 # Fideligaard
-<hr />
 
 Trade stocks to become a master of the stock market!
 
 ## App Description
-<hr />
 
 * Slide the date widget to change the date in which you want to trade
 * Click on "Trade" on a particular stock to trade the stock
 * Users have options to:
-..1. trade stocks
-..2. view past transactions
-..3. view stock portfolio (amount of each stock in user possession)
+⋅⋅1. trade stocks
+⋅⋅2. view past transactions
+⋅⋅3. view stock portfolio (amount of each stock in user possession)
 
 
 [Checkout Fideligaard Here!](https://fideligaard-app.herokuapp.com)
 
 ## Technologies
-<hr />
 
 <strong>Frontend:</strong>
 * React.js
@@ -33,7 +30,6 @@ Trade stocks to become a master of the stock market!
 
 
 ## To Develop / Run the App Locally
-<hr />
 1. Clone the repository
 2. In the root directory, run:
 <pre>npm i && cd server && npm i && cd ../client && npm i && cd ..</pre>
