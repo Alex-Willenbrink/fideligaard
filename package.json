@@ -22,6 +22,10 @@
   "homepage": "https://github.com/Alex-Willenbrink/project_fideligard_spa#readme",
   "dependencies": {
     "concurrently": "^3.5.0",
-    "redux-devtools-extension": "^2.13.2"
+    "material-ui": "^0.19.4",
+    "react-tooltip": "^3.4.0",
+    "redux-devtools-extension": "^2.13.2",
+    "shortid": "^2.2.8",
+    "sweetalert2": "^7.0.0"
   }
 }

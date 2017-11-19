@@ -1,14 +1,16 @@
 #main-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 #main-container .left {
-  width: 40%;
+  width: 45%;
+  margin: 1%;
 }
 
 #main-container .right {
-  width: 40%;
+  width: 45%;
+  margin: 1%;
 }

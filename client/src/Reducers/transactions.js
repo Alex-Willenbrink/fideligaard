@@ -2,7 +2,7 @@ import { TransactionsActions } from "../Actions";
 
 const initialState = {
   transactions: [],
-  balance: 1000,
+  balance: 10000,
   stocks: {},
   loading: false,
   error: null
@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
       if (Object.keys(stocksNew).includes(ticker)) {
         stocksNew[ticker] += quantity * multiplier * -1;
       } else {
-        stocksNew[ticker] = quantity * multiplier + -1;
+        stocksNew[ticker] = quantity * multiplier * -1;
       }
 
       return {

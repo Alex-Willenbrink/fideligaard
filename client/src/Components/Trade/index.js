@@ -4,8 +4,9 @@ import Paper from "material-ui/Paper";
 import RaisedButton from "material-ui/RaisedButton";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 import TextField from "material-ui/TextField";
-
 import Divider from "material-ui/Divider";
+
+import RouterDropdown from "../RouterDropdown";
 
 import "./Trade.css";
 
@@ -19,7 +20,8 @@ const Trade = ({
   date,
   price,
   cost,
-  onTradeTransaction
+  onTradeTransaction,
+  isValidTransaction
 }) => {
   const tradeInfo = [
     {
@@ -36,7 +38,7 @@ const Trade = ({
         <RadioButtonGroup
           onChange={onTradeInfoChange}
           name="tradeType"
-          value={tradeType}
+          defaultSelected={tradeType}
         >
           <RadioButton value="Buy" label="Buy" />
           <RadioButton value="Sell" label="Sell" />
@@ -84,7 +86,7 @@ const Trade = ({
       <section id="trade-container">
         <div id="trade-header-container">
           <h2 id="trade-title">TRADE</h2>
-          <h2 id="router-dropdown">Router Dropdown</h2>
+          <RouterDropdown route="Trade" />
         </div>
         <Divider className="divider" />
         <div id="trade-cash-container">
@@ -118,6 +120,8 @@ const Trade = ({
           label="Place Order"
           primary={true}
           onClick={onTradeTransaction}
+          disabled={!isValidTransaction}
+          data-tip="test"
         />
       </section>
     </Paper>

@@ -3,17 +3,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
+import shortid from "shortid";
+import swal from "sweetalert2";
 
 import * as TransactionsActions from "../Actions/transactions";
-
 import Trade from "../Components/Trade";
-
-/*
-
-- should probably pass the stocksData reducer to TradeContainer
-- we could make a trade reducer that keeps track of the symbol (date is already date reducer)
-
- */
 
 class TradeContainer extends Component {
   state = {
@@ -21,13 +15,14 @@ class TradeContainer extends Component {
     tradeType: "Buy",
     quantity: 0,
     price: 0,
-    cost: 0
+    cost: 0,
+    isValidTransaction: false
   };
 
   async componentDidMount() {
     const { t } = queryString.parse(this.props.location.search);
     const { currentDate } = this.props.DateReducers;
-    this.setState({
+    await this.setState({
       symbol: t || null
     });
     // update price and cost
@@ -43,19 +38,29 @@ class TradeContainer extends Component {
   }
 
   updatePriceAndCost = () => {
+    const { balance, stocks } = this.props.TransactionsReducers;
+    const { symbol, quantity, tradeType } = this.state;
     let price = 0,
-      cost = 0;
-    if (this.props.StocksReducers.stocksData) {
-      const { symbol, quantity } = this.state;
+      cost = 0,
+      isValidTransaction = false;
+    if (this.props.StocksReducers.stocksData && symbol) {
       const { currentDate } = this.props.DateReducers;
       price = this.props.StocksReducers.stocksData.stocks[symbol][
         currentDate.format("YYYY-MM-DD")
       ];
       cost = price * quantity;
     }
+
+    if (tradeType === "Buy") {
+      isValidTransaction = balance >= cost && cost > 0;
+    } else if (tradeType === "Sell") {
+      isValidTransaction = stocks[symbol] && stocks[symbol] >= quantity;
+    }
+
     this.setState({
       price,
-      cost
+      cost,
+      isValidTransaction
     });
   };
 
@@ -92,16 +97,41 @@ class TradeContainer extends Component {
       ticker: symbol,
       type: tradeType,
       quantity,
-      price
+      price,
+      id: shortid.generate()
     };
 
     this.props.TransactionsActions.tradeTransaction(transaction);
+    if (tradeType === "Buy") {
+      swal({
+        title: "Bought Stocks!",
+        text: `You acquired ${quantity} stocks from ${symbol}`,
+        type: "success",
+        timer: 2000
+      });
+    } else if (tradeType === "Sell") {
+      swal({
+        title: "Sold Stocks!",
+        text: `You sold ${quantity} stocks from ${symbol}`,
+        type: "success",
+        timer: 2000
+      });
+    }
   };
 
   render() {
+    // console.log("this.props: ", this.props);
+    // console.log("this.state: ", this.state);
     let { balance } = this.props.TransactionsReducers;
     let { currentDate } = this.props.DateReducers;
-    let { symbol, tradeType, quantity, price, cost } = this.state;
+    let {
+      symbol,
+      tradeType,
+      quantity,
+      price,
+      cost,
+      isValidTransaction
+    } = this.state;
 
     balance = this.isNumber(balance) && `$${balance.toFixed(2)}`;
     price = this.isNumber(price) && `$${price.toFixed(2)}`;
@@ -120,6 +150,7 @@ class TradeContainer extends Component {
         price={price}
         cost={cost}
         onTradeTransaction={this.onTradeTransaction}
+        isValidTransaction={isValidTransaction}
       />
     );
   }

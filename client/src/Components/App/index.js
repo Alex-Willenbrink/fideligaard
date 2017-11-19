@@ -1,17 +1,11 @@
 import React, { PureComponent } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-//Portfolio, trade, transaction
-// import Portfolio from "./Portfolio";
-// import StocksContainer from "../Containers/StocksContainer";
-// import Transactions from "./Transactions";
-
-// import NavLinks from "./NavLinks";
-// import { NavLink } from "react-router-dom";
 import Navbar from "../Navbar";
 import DateWidgetContainer from "../../Containers/DateWidgetContainer";
 import StocksDataContainer from "../../Containers/StocksDataContainer";
 import TradeContainer from "../../Containers/TradeContainer";
+import TransactionsContainer from "../../Containers/TransactionsContainer";
 
 import "./App.css";
 
@@ -42,6 +36,11 @@ class App extends PureComponent {
                     exact
                     path="/Trade"
                     render={() => <TradeContainer id="trade-container" />}
+                  />
+                  <Route
+                    exact
+                    path="/Transactions"
+                    render={() => <TransactionsContainer />}
                   />
                 </Switch>
               </div>

@@ -41,10 +41,6 @@ const DownWing = props =>
     <path d="M0-.75h24v24H0z" fill="none" />
   </SvgIcon>;
 
-// import { NavLink } from "react-router-dom";
-
-// row = {symbol: "AAPL", Price: 123.45, "1d": +1.54...}
-
 const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
   const headerLabels = ["Symbol", "Price", "1d", "7d", "30d", "Trade"];
   const tableHeaderRow = headerLabels.map((label, index) =>
