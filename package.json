@@ -7,7 +7,7 @@
     "startServer": "cd server && nodemon server.js",
     "startClient": "cd client && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently  --names \"server,client\" -c \"red,green\" \"npm run startServer\" \"npm run startClient\""
+    "dev": "concurrently  --names \"server,client\" -c \"red,green\" \"npm run startServer\" \"npm run startClient\""
   },
   "repository": {
     "type": "git",
