@@ -95,7 +95,7 @@ const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
     <Paper>
       <article className="stocks-data-top-container">
         <h2 className="stocks-data-top" id="stocks-data-header">
-          STOCKS
+          Stocks
         </h2>
         <TextField
           floatingLabelText="Filter by Symbol"

@@ -19,7 +19,6 @@ class App extends PureComponent {
           <div className="router-container">
             <Navbar />
             <br />
-            <br />
             <article id="main-container">
               <div className="left">
                 <StocksDataContainer />
@@ -28,8 +27,6 @@ class App extends PureComponent {
                 <div id="date-widget-container">
                   <DateWidgetContainer />
                 </div>
-                <br />
-                <br />
                 <br />
                 <Switch>
                   <Route

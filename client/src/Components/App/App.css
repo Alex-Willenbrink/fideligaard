@@ -14,3 +14,9 @@
   width: 45%;
   margin: 1%;
 }
+
+#root {
+  height: auto;
+  min-height: 100vh;
+  background-color: #e0f7fa;
+}

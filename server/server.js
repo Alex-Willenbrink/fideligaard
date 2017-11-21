@@ -7,10 +7,13 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-// Database (loose definition of database)
+// Database
 const fs = require("fs");
 if (!fs.existsSync("data.json")) {
-  require("./database")(process.env.QUANDL_API_KEY);
+  const { seedDatabase } = require("./database");
+  (async () => {
+    await seedDatabase();
+  })();
 }
 
 // Back-end Routes

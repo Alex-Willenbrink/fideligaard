@@ -77,17 +77,6 @@ export default class Example extends React.Component {
           title="Fideligard"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
-        {/* <Navbar className="navbar" light toggleable>
-          <NavbarToggler right onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <NavLinks />
-            <Nav className="ml-auto" navbar>
-              <NavItem disabled className="title">
-                Fideligard
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar> */}
       </div>
     );
   }
