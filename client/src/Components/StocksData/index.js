@@ -11,7 +11,6 @@ import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 import { withRouter, Link } from "react-router-dom";
 
-// import NeoSans from "../../assets/NeoSansStd-Bold.otf"
 import SvgIcon from "material-ui/SvgIcon";
 import { red400, green400 } from "material-ui/styles/colors";
 
@@ -92,22 +91,24 @@ const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
   });
 
   return (
-    <Paper>
-      <article className="stocks-data-top-container">
-        <h2 className="stocks-data-top" id="stocks-data-header">
-          Stocks
-        </h2>
+    <Paper id="stocks-container">
+      <div className="top">
+        <h2 className="header">Stocks</h2>
         <TextField
           floatingLabelText="Filter by Symbol"
-          className="stocks-data-top"
+          className="textfield"
           id="filter-by-symbol"
           onChange={onFilterChange}
         />
-      </article>
-      <div className="stocks-table-container">
-        <Paper>
-          <Table>
-            <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+      </div>
+      <div className="bottom">
+        <Paper className="table-container">
+          <Table fixedHeader={true}>
+            <TableHeader
+              displaySelectAll={false}
+              adjustForCheckbox={false}
+              className="table-header"
+            >
               <TableRow>
                 {tableHeaderRow}
               </TableRow>

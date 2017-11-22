@@ -1,39 +1,55 @@
-@font-face {
-  font-family: 'NeoSans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('NeoSans'), url(../../assets/NeoSansStd-Bold.otf) format('otf');
+#stocks-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.stocks-data-top-container {
+#stocks-container .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 150px;
+  padding-bottom: 100px;
+}
+
+#stocks-container .bottom {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  height: 100px;
+  align-items: center;
+  height: 100%;
+  padding: 10px;
 }
 
-.stocks-table-container {
-  padding: 10px !important;
+.table-container {
+  overflow-y: scroll;
+  height: 100%;
 }
 
-.stocks-data-top {
-  margin: 0 10px !important;
+#stocks-container .top .header {
+  padding: 10px;
+  background-color: #00bbd3;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: white;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
 }
 
-/*#filter-by-symbol {
-  margin-bottom: 40px !important;
-}*/
-#stocks-data-header {
-  padding-top: 28px;
-  /*color: #e040fb;*/
-  /*font-family: NeoSans;*/
-  /*font-weight: bold;*/
+#stocks-container .top .textfield {
+  margin-right: 20px;
+}
+
+.table-header {
 }
 
 .stocks-table-label {
   display: flex;
-  /*flex-direction: row;*/
+  justify-content: center;
 }
 
 .svg-arrow {

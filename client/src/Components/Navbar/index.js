@@ -1,11 +1,8 @@
 import React from "react";
-// import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
 import IconButton from "material-ui/IconButton";
 import SvgIcon from "material-ui/SvgIcon";
-
 import AppBar from "material-ui/AppBar";
-
-// import NavLinks from "../NavLinks";
+import "./Navbar.css";
 
 const MoneyIcon = ({ fill }) =>
   <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" fill={fill}>
@@ -76,6 +73,7 @@ export default class Example extends React.Component {
           }
           title="Fideligard"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
+          className="fideligard-navbar"
         />
       </div>
     );

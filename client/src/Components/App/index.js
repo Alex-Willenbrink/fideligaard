@@ -20,10 +20,10 @@ class App extends PureComponent {
             <Navbar />
             <br />
             <article id="main-container">
-              <div className="left">
+              <div className="main-subcontainer">
                 <StocksDataContainer />
               </div>
-              <div className="right">
+              <div className="main-subcontainer">
                 <div id="date-widget-container">
                   <DateWidgetContainer />
                 </div>

@@ -25,7 +25,7 @@ server.get("/api/stocks", (req, res) => {
 const path = require("path");
 server.use(express.static(path.join(__dirname, "./build")));
 
-// ???
+// Serve HTML?
 server.all("/*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "/build/index.html"));
 });

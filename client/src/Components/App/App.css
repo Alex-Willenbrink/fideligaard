@@ -1,18 +1,16 @@
 #main-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 15px;
 }
 
-#main-container .left {
-  width: 45%;
-  margin: 1%;
-}
-
-#main-container .right {
-  width: 45%;
-  margin: 1%;
+.main-subcontainer {
+  width: 48%;
+  min-width: 550px;
+  height: 85vh;
+  min-height: 500px;
 }
 
 #root {
