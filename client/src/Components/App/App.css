@@ -3,14 +3,16 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 15px;
 }
 
 .main-subcontainer {
+  display: flex;
+  flex-direction: column;
   width: 48%;
   min-width: 550px;
   height: 85vh;
-  min-height: 500px;
+  min-height: 700px;
+  padding: 5px;
 }
 
 #root {

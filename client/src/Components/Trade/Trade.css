@@ -1,14 +1,8 @@
 #trade-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-#trade-header-container {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  height: 100%;
 }
 
 #trade-cash-container {
@@ -52,7 +46,51 @@
   font-size: 16px;
 }
 
+#trade-container .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100px;
+  padding-bottom: 100px;
+}
+
+#trade-container .top .header {
+  padding: 10px;
+  background-color: #00bbd3;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: white;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
+}
+
 .divider {
   height: 1px !important;
   margin: 10px !important;
+}
+
+.money-icon {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+}
+
+#trade-container .trade-balance-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+#balance-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
 }

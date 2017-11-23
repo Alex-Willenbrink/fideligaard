@@ -1,5 +1,6 @@
 import { TransactionsActions } from "../Actions";
 
+// import moment from "moment";
 const initialState = {
   transactions: [],
   balance: 10000,
@@ -7,6 +8,43 @@ const initialState = {
   loading: false,
   error: null
 };
+
+// const initialState = {
+//   transactions: [
+//     {
+//       date: moment("2016-01-01"),
+//       ticker: "AAPL",
+//       type: "Buy",
+//       quantity: 1,
+//       price: 105.35,
+//       id: "Hyf2pPQgz"
+//     },
+//     {
+//       date: moment("2016-01-01"),
+//       ticker: "ABT",
+//       type: "Buy",
+//       quantity: 6,
+//       price: 42.93,
+//       id: "HJjnavQeG"
+//     },
+//     {
+//       date: moment("2016-01-01"),
+//       ticker: "LUV",
+//       type: "Buy",
+//       quantity: 5,
+//       price: 41.96,
+//       id: "B1MpavQxG"
+//     }
+//   ],
+//   balance: 9427.27,
+//   stocks: {
+//     AAPL: 1,
+//     ABT: 6,
+//     LUV: 5
+//   },
+//   loading: false,
+//   error: null
+// };
 
 // transaction - {date: moment, ticker: String, type ("Buy", "Sell"), quantity, price}
 // stocks {"ticker": count}

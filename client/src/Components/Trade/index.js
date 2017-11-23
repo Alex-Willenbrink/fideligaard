@@ -7,6 +7,7 @@ import TextField from "material-ui/TextField";
 import Divider from "material-ui/Divider";
 
 import RouterDropdown from "../RouterDropdown";
+import { MoneyBag } from "../SvgIcons";
 
 import "./Trade.css";
 
@@ -21,7 +22,8 @@ const Trade = ({
   price,
   cost,
   onTradeTransaction,
-  isValidTransaction
+  isValidTransaction,
+  moneyBagSize
 }) => {
   const tradeInfo = [
     {
@@ -81,49 +83,57 @@ const Trade = ({
       )
     }
   ];
+
+  const balanceAmountStyle = {
+    fontSize: `${24}px`,
+    margin: 0,
+    padding: 0
+  };
+
   return (
-    <Paper>
-      <section id="trade-container">
-        <div id="trade-header-container">
-          <h2 id="trade-title">TRADE</h2>
+    <Paper id="trade-container">
+      <div className="top">
+        <h2 className="header">Trade</h2>
+        <div className="trade-balance-container">
+          <div id="balance-container">
+            <h4 style={balanceAmountStyle}>Balance: </h4>
+            <MoneyBag width={moneyBagSize} height={moneyBagSize} />
+            <h4 style={balanceAmountStyle}>
+              {balance}
+            </h4>
+          </div>
           <RouterDropdown route="Trade" />
         </div>
-        <Divider className="divider" />
-        <div id="trade-cash-container">
-          <h4>Available balance</h4>
-          <h4>
-            {balance}
-          </h4>
-        </div>
-        <Divider className="divider" />
-        <Paper id="trade-info-container">
-          {tradeInfo.map((infoObj, index) => {
-            let className =
-              index % 2 === 0
-                ? "trade-info-instance-container even"
-                : "trade-info-instance-container";
-            return (
-              <div className={className} key={infoObj.label}>
-                <div className="trade-info label">
-                  <h4>
-                    {infoObj.label}
-                  </h4>
-                </div>
-                <div className="trade-info value">
-                  {infoObj.element}
-                </div>
+      </div>
+
+      <Divider className="divider" />
+      <Paper id="trade-info-container">
+        {tradeInfo.map((infoObj, index) => {
+          let className =
+            index % 2 === 0
+              ? "trade-info-instance-container even"
+              : "trade-info-instance-container";
+          return (
+            <div className={className} key={infoObj.label}>
+              <div className="trade-info label">
+                <h4>
+                  {infoObj.label}
+                </h4>
               </div>
-            );
-          })}
-        </Paper>
-        <RaisedButton
-          label="Place Order"
-          primary={true}
-          onClick={onTradeTransaction}
-          disabled={!isValidTransaction}
-          data-tip="test"
-        />
-      </section>
+              <div className="trade-info value">
+                {infoObj.element}
+              </div>
+            </div>
+          );
+        })}
+      </Paper>
+      <RaisedButton
+        label="Place Order"
+        primary={true}
+        onClick={onTradeTransaction}
+        disabled={!isValidTransaction}
+        data-tip="test"
+      />
     </Paper>
   );
 };

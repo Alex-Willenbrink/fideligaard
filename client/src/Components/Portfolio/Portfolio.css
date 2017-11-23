@@ -1,0 +1,30 @@
+#portfolio-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#portfolio-container .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#portfolio-container .top .header {
+  padding: 10px;
+  background-color: #00bbd3;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: white;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
+}
+
+#portfolio-container .table-container {
+  padding: 10px;
+}

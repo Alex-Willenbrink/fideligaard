@@ -11,34 +11,10 @@ import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 import { withRouter, Link } from "react-router-dom";
 
-import SvgIcon from "material-ui/SvgIcon";
 import { red400, green400 } from "material-ui/styles/colors";
 
+import { UpArrow, DownArrow, UpWing, DownWing } from "../SvgIcons";
 import "./StocksData.css";
-
-const UpArrow = props =>
-  <SvgIcon {...props}>
-    <path d="M7 14l5-5 5 5z" />
-    <path d="M0 0h24v24H0z" fill="none" />
-  </SvgIcon>;
-
-const DownArrow = props =>
-  <SvgIcon {...props}>
-    <path d="M7 10l5 5 5-5z" />
-    <path d="M0 0h24v24H0z" fill="none" />
-  </SvgIcon>;
-
-const UpWing = props =>
-  <SvgIcon {...props}>
-    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
-    <path d="M0 0h24v24H0z" fill="none" />
-  </SvgIcon>;
-
-const DownWing = props =>
-  <SvgIcon {...props}>
-    <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
-    <path d="M0-.75h24v24H0z" fill="none" />
-  </SvgIcon>;
 
 const StocksData = ({ stocksData, onFilterChange, onSortChange, sortDir }) => {
   const headerLabels = ["Symbol", "Price", "1d", "7d", "30d", "Trade"];

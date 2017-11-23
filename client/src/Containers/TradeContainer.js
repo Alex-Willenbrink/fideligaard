@@ -21,7 +21,6 @@ class TradeContainer extends Component {
 
   async componentDidMount() {
     const { t } = queryString.parse(this.props.location.search);
-    const { currentDate } = this.props.DateReducers;
     await this.setState({
       symbol: t || null
     });
@@ -87,7 +86,7 @@ class TradeContainer extends Component {
     return ~~value;
   };
 
-  isNumber = value => !isNaN(parseInt(value));
+  isNumber = value => !isNaN(parseInt(value, 10));
 
   onTradeTransaction = () => {
     const { symbol, tradeType, quantity, price } = this.state;
@@ -120,8 +119,6 @@ class TradeContainer extends Component {
   };
 
   render() {
-    // console.log("this.props: ", this.props);
-    // console.log("this.state: ", this.state);
     let { balance } = this.props.TransactionsReducers;
     let { currentDate } = this.props.DateReducers;
     let {
@@ -133,10 +130,14 @@ class TradeContainer extends Component {
       isValidTransaction
     } = this.state;
 
-    balance = this.isNumber(balance) && `$${balance.toFixed(2)}`;
+    const date = currentDate ? currentDate.format("MM/DD/YYYY") : null;
+    const moneyBagSize = this.isNumber(balance)
+      ? Math.round(Math.pow(balance * 6, 0.33))
+      : 0;
+
+    balance = this.isNumber(balance) && `${balance.toFixed(2)}`;
     price = this.isNumber(price) && `$${price.toFixed(2)}`;
     cost = this.isNumber(cost) && `$${cost.toFixed(2)}`;
-    let date = currentDate ? currentDate.format("MM/DD/YYYY") : null;
 
     return (
       <Trade
@@ -151,6 +152,7 @@ class TradeContainer extends Component {
         cost={cost}
         onTradeTransaction={this.onTradeTransaction}
         isValidTransaction={isValidTransaction}
+        moneyBagSize={moneyBagSize}
       />
     );
   }

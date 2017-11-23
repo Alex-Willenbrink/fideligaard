@@ -6,6 +6,7 @@ import DateWidgetContainer from "../../Containers/DateWidgetContainer";
 import StocksDataContainer from "../../Containers/StocksDataContainer";
 import TradeContainer from "../../Containers/TradeContainer";
 import TransactionsContainer from "../../Containers/TransactionsContainer";
+import PortfolioContainer from "../../Containers/PortfolioContainer";
 
 import "./App.css";
 
@@ -38,6 +39,11 @@ class App extends PureComponent {
                     exact
                     path="/Transactions"
                     render={() => <TransactionsContainer />}
+                  />
+                  <Route
+                    exact
+                    path="/Portfolio"
+                    render={() => <PortfolioContainer />}
                   />
                 </Switch>
               </div>

@@ -8,8 +8,10 @@ import {
   TableRowColumn
 } from "material-ui/Table";
 import Paper from "material-ui/Paper";
-import TextField from "material-ui/TextField";
 import RouterDropdown from "../RouterDropdown";
+import Divider from "material-ui/Divider";
+
+import "./Transactions.css";
 
 const Transactions = ({ transactions }) => {
   const headerArr = [
@@ -17,7 +19,8 @@ const Transactions = ({ transactions }) => {
     { label: "Symbol", value: "ticker" },
     { label: "Type", value: "type" },
     { label: "Quantity", value: "quantity" },
-    { label: "Price", value: "price" }
+    { label: "Price", value: "price" },
+    { label: "Cost", value: "cost" }
   ];
   const tableHeaderRow = (
     <TableRow>
@@ -43,6 +46,13 @@ const Transactions = ({ transactions }) => {
               </p>
             );
             break;
+          case "cost":
+            columnNode = (
+              <p>
+                {(rowData.price * rowData.quantity).toFixed(2)}
+              </p>
+            );
+            break;
           default:
             columnNode = (
               <p>
@@ -60,10 +70,15 @@ const Transactions = ({ transactions }) => {
   );
 
   return (
-    <Paper>
-      <h2>Transactions</h2>
-      <RouterDropdown route={"Transactions"} />
-      <Paper>
+    <Paper id="transactions-container">
+      <div className="top">
+        <h2 className="header">Transactions</h2>
+        <RouterDropdown route={"Transactions"} />
+      </div>
+      <br />
+      <br />
+      <Divider className="divider" />
+      <Paper className="table-container bottom">
         <Table>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             {tableHeaderRow}
