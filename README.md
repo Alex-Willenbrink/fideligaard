@@ -11,10 +11,11 @@ Trade stocks to become a master of the stock market!
   <li>trade stocks</li>
   <li>view past transactions</li>
   <li>view stock portfolio (amount of each stock in user possession)</li>
-</ol> 
+</ol>
 
 
 [Checkout Fideligaard Here!](https://fideligaard-app.herokuapp.com)
+<i>(note: it may take up to 15 seconds or for the stocks to load)</i>
 
 ## Technologies
 
