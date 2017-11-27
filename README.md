@@ -15,7 +15,7 @@ Trade stocks to become a master of the stock market!
 
 
 [Checkout Fideligaard Here!](https://fideligaard-app.herokuapp.com)
-<i>(note: it may take up to 15 seconds or for the stocks to load)</i>
+<i>(note: it may take a few seconds (15 - 30) for the stocks to load)</i>
 
 ## Technologies
 
